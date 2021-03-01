@@ -1,8 +1,9 @@
 // templates pages
 const Engineer = require("./lib/Engineer");
+const Employee = require("./lib/Employee");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
-const html = require("./src/index.html");
+//const html = require("./src/index.html");
 // node
 const inquirer = require("inquirer");
 const jest = require("jest");
@@ -14,6 +15,28 @@ const writeFileAsync = util.promisify(fs.writeFile);
 // empty array used to hold team
 let teamArray = [];
 
+function end() {
+    inquirer.prompt([
+        {
+            type: "list",
+            message: "Would you like to add more team members?",
+            choices: ["Yes", "No I am done"],
+            name: "ending switch"
+        }
+    ])
+
+        .then(function (data) {
+
+            switch (data.endData) {
+                case "Yes":
+                    addTeamMembers();
+                    break;
+                case "No, my team is complete":
+                    compileTeam();
+                    break;
+            }
+        });
+}
 
 function addTeamMembers() {
     inquirer.prompt([
@@ -68,7 +91,7 @@ function addEmployee() {
             const github = data.github
             const teamMember = new Employee(name, id, email, github)
             teamArray.push(teamMember)
-            addTeamMembers()
+            end()
         });
 
 };
@@ -96,7 +119,7 @@ function addEngineer() {
             const github = data.github
             const teamMember = new Engineer(name, id, email, github)
             teamArray.push(teamMember)
-            addTeamMembers()
+            end()
         });
 
 };
@@ -124,7 +147,7 @@ function addIntern() {
             const school = data.github
             const teamMember = new Intern(name, id, email, github)
             teamArray.push(teamMember)
-            addTeamMembers()
+            end()
         });
 
 };
@@ -151,7 +174,8 @@ function addManager() {
             const github = data.github
             const teamMember = new Manager(name, id, email, github)
             teamArray.push(teamMember)
-            addTeamMembers()
+            end()
         });
-
 };
+
+addTeamMembers()

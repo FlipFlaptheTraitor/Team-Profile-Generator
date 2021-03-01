@@ -44,14 +44,13 @@ h2 {
     justify-content: space-around;
     position: absolute;
 }
-.card-top {
+.card {
     background-color: rgb(238, 215, 11);
     width: 246px;
     border: 2px solid rgb(238, 215, 11);
     border-top-left-radius: 10px;
-}
-.card-bottom {
     align-content: center;
     display: flex;
     flex-direction: column;
 }
+
