@@ -15,6 +15,42 @@ const writeFileAsync = util.promisify(fs.writeFile);
 // empty array used to hold team
 let teamArray = [];
 
+
+
+function compilePage() {
+    
+    return `
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
+        <link rel="stylesheet" href="./style.css" />
+        <title>Team Profile</title>
+    </head>
+    
+    <body>
+        <div class="member-card">
+            <div class="card">
+                <h2>${teamArray[i].name}</h2>
+                <p>Employee ID: ${teamArray[i].id}</p>
+                <p>Github: <a href='https://github.com/ ${teamArray[i].github}'>${teamArray[i].github}</a></p>
+                <p>Email: <a href='mailto:${teamArray[i].email}'>${teamArray[i].email}</a>></p>
+                </div>
+                </div>
+    </body>
+    
+    </html>
+    `
+}
+    fs.writeFile(`./generated-html.html`, function (err) {
+        
+    })
+
+
 function end() {
     inquirer.prompt([
         {
@@ -32,7 +68,7 @@ function end() {
                     addTeamMembers();
                     break;
                 case "No, my team is complete":
-                    compileTeam();
+                    compilePage();
                     break;
             }
         });
