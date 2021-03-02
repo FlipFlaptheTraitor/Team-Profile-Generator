@@ -189,7 +189,6 @@ function compile() {
     const htmlBeginning = `
     <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -198,9 +197,7 @@ function compile() {
     <link rel="stylesheet" href="./src/style.css" />
     <title>Team Profile</title>
 </head>
-
 <body>
-
     `
     htmlArray.push(htmlBeginning);
 
@@ -241,7 +238,7 @@ function compile() {
     `
     htmlArray.push(htmlEnd);
 
-    fs.writeFile(`./dis/TeamGen.html`, htmlArray.join(""), function (err) {
+    fs.writeFile('./dist/TeamGen.html', htmlArray.join(""), function (err) {
         
     }) 
 }    
